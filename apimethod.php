@@ -128,6 +128,28 @@ class Person
 		header('Content-Type: application/json');
 		echo json_encode($response);
 	}
+
+	function delete_person($id)
+   {
+      global $mysqli;
+      $query="DELETE FROM person WHERE id=".$id;
+      if(mysqli_query($mysqli, $query))
+      {
+         $response=array(
+            'status' => 1,
+            'message' =>'Person Deleted Successfully.'
+         );
+      }
+      else
+      {
+         $response=array(
+            'status' => 0,
+            'message' =>'Person Deletion Failed.'
+         );
+      }
+      header('Content-Type: application/json');
+      echo json_encode($response);
+   }
 }
 
 ?>

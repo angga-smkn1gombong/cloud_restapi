@@ -25,6 +25,10 @@ switch ($request_method) {
 			$person->insert_person();
 		}     
 		break;
+	case 'DELETE':
+		$id=intval($_GET["id"]);
+        	$person->delete_person($id);
+        	break;
 	default:
 		// Invalid Request Method
 			header("HTTP/1.0 405 Method Not Allowed");
